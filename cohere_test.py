@@ -1,8 +1,9 @@
 import cohere
 import streamlit as st
+import os
 
 st.title("Cohere test")
-co = cohere.Client('rN5X4fIbAtckJzZhsVMosXMcVjjPb0ZR1NtXNzLN') # This is your trial API key
+co = cohere.Client(os.getenv('COHERE_KEY')) # This is your trial API key
 response = co.generate(
   model='command',
   prompt='hello, its very hot, what will you suggest i do to get comfortable ? give me a list of 5 things in order of effectiveness and estimate the $ value\n',

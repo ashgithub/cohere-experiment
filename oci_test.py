@@ -25,15 +25,22 @@ The sample attempts to extract text from an inline document
 Successful run of this sample will create job results under object storage configured under output_location variable
 """
 import oci
+import os
 import uuid
 import base64
 import streamlit as st
 
 # Setup basic variables
 # Auth Config
-CONFIG_PROFILE = "DEFAULT"
-config = oci.config.from_file('.oci/oci_config', CONFIG_PROFILE)
+config = {
+    "user": os.getenv('OCI_USER'),
+    "key_content": os.getenv('OCI_KEY'),
+    "fingerprint": os.getenv('OCI_KEY_FINGERPRINT'),
+    "tenancy": os.getenv('OCI_TENANCY'),
+    "region": os.getenv('OCI_REGION')
+}
 
+st.title("with env variables")
 # Compartment where processor job will be created
 COMPARTMENT_ID = "ocid1.compartment.oc1..aaaaaaaac3cxhzoka75zaaysugzmvhm3ni3keqvikawjxvwpz26mud622owa"  # e.g. "ocid1.compartment.oc1..aaaaaaaae5j73axsja5fnahbn23ilop3ynjkcg77mcvgryddz4pkh2t5ppaq";
 
