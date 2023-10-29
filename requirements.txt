@@ -5,4 +5,4 @@ pydeck
 streamlit
 cohere
 oci
-#streamlit-back-camera-input
+streamlit-back-camera-input
